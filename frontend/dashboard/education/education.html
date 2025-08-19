@@ -1,0 +1,35 @@
+<div *ngFor="let edu of education; let i = index" class="education-form">
+  <h3>{{ edu.school }}</h3>
+  <form [formGroup]="educationForms[i]">
+    <input formControlName="school" placeholder="School" />
+    <input formControlName="degree" placeholder="Degree" />
+
+    <input formControlName="startDate" placeholder="Start Date" type="date"/>
+    <input formControlName="endDate" placeholder="End Date" type="date"/>
+    <textarea formControlName="description" placeholder="Description"></textarea>
+
+    <div class="button-group">
+        <button type="button" (click)="updateEducationField(edu)">Edit</button>
+        <button type="button" class="delete" (click)="deleteEducationField(edu._id, i)">Delete</button>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="newEducationForm" class="education-form new-education">
+  <h3>New Education Field</h3>
+  <form [formGroup]="newEducationForm">
+    <input formControlName="school" placeholder="School" />
+    <input formControlName="degree" placeholder="Degree" />
+
+    <input formControlName="startDate" placeholder="Start Date" type="date"/>
+    <input formControlName="endDate" placeholder="End Date" type="date"/>
+    <textarea formControlName="description" placeholder="Description"></textarea>
+
+    <div class="button-group">
+        <button type="button" (click)="addEducationField()">Save</button>
+        <button type="button" class="cancel" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<button (click)="addNewForm()">Add New Education Field</button>

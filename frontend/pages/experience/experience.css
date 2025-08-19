@@ -1,0 +1,13 @@
+
+.card {
+  border-radius: 10px;
+}
+
+h2 {
+  color: #007bff;
+  font-weight: 700;
+}
+
+button {
+  min-width: 80px;
+}

@@ -1,0 +1,47 @@
+
+<div class="container my-5">
+  <h2 class="text-white mb-4">RECENT PROJECTS</h2>
+
+  <!-- هنا عشان اضيف مشروع جديد -->
+  <h4 class="text-white">Add New Project</h4>
+  <form (ngSubmit)="addNewProject()">
+    <input class="form-control mb-2" [(ngModel)]="newProject.title" name="title" placeholder="Title" required>
+    <textarea class="form-control mb-2" [(ngModel)]="newProject.description" name="description" placeholder="Description"></textarea>
+    <input class="form-control mb-2" [(ngModel)]="newProject.image" name="image" placeholder="Image URL">
+    <input class="form-control mb-2" [(ngModel)]="newProject.demoLink" name="demoLink" placeholder="Demo Link">
+    <input class="form-control mb-2" [(ngModel)]="newProject.codeLink" name="codeLink" placeholder="Code Link">
+    <button class="btn btn-success">Add Project</button>
+  </form>
+
+  <hr>
+
+
+  <div class="row">
+    <div *ngFor="let project of projects; let i = index" class="col-md-3 mb-4">
+      <div class="card h-100">
+        <img [src]="project.image" class="card-img-top" alt="{{ project.title }}">
+        <div class="card-body">
+          <h5>{{ project.title }}</h5>
+          <p>{{ project.description }}</p>
+          <a *ngIf="project.demoLink" [href]="project.demoLink" target="_blank" class="btn btn-primary btn-sm">Live Demo</a>
+          <a *ngIf="project.codeLink" [href]="project.codeLink" target="_blank" class="btn btn-secondary btn-sm mt-1">Source Code</a>
+          <button class="btn btn-warning btn-sm mt-3" (click)="enableEdit(i)">Edit</button>
+          <button class="btn btn-danger btn-sm mt-3" (click)="deleteProject(project._id)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="editModeIndex !== null" class="mt-4">
+    <h3>Edit Project</h3>
+    <form (ngSubmit)="saveChanges()">
+      <input type="text" class="form-control mb-2" [(ngModel)]="updatedProject.title" name="title">
+      <textarea class="form-control mb-2" [(ngModel)]="updatedProject.description" name="description"></textarea>
+      <input type="text" class="form-control mb-2" [(ngModel)]="updatedProject.image" name="image">
+      <input type="text" class="form-control mb-2" [(ngModel)]="updatedProject.demoLink" name="demoLink">
+      <input type="text" class="form-control mb-2" [(ngModel)]="updatedProject.codeLink" name="codeLink">
+      <button class="btn btn-success">Save</button>
+    </form>
+  </div>
+</div>

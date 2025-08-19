@@ -1,0 +1,44 @@
+<div *ngFor="let service of services; let i = index" class="service-form">
+  <h3>{{ service.title }}</h3>
+  <form [formGroup]="servicesForms[i]">
+    
+    <!-- أيقونة المعاينة -->
+    <div class="icon-preview">
+      <i [class]="servicesForms[i].get('icon')?.value"></i>
+    </div>
+
+    <!-- إدخال class الأيقونة -->
+    <input formControlName="icon" placeholder="Enter icon class (e.g. fa fa-user)" />
+
+    <input formControlName="title" placeholder="Service Title" />
+    <textarea formControlName="description" placeholder="Description"></textarea>
+
+    <div class="button-group">
+        <button type="button" (click)="updateService(service)">Edit</button>
+        <button type="button" class="delete" (click)="deleteService(service._id, i)">Delete</button>
+    </div>
+  </form>
+</div>
+
+<!-- فورم إضافة خدمة جديدة -->
+<div *ngIf="newServiceForm" class="service-form new-service">
+  <h3>New Service</h3>
+  <form [formGroup]="newServiceForm">
+
+    <div class="icon-preview">
+      <i [class]="newServiceForm.get('icon')?.value"></i>
+    </div>
+
+    <input formControlName="icon" placeholder="Enter Boxicon class (e.g. bx bx-code)" />
+
+    <input formControlName="title" placeholder="Service Title" />
+    <textarea formControlName="description" placeholder="Description"></textarea>
+
+    <div class="button-group">
+        <button type="button" (click)="addService()">Save</button>
+        <button type="button" class="cancel" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<button (click)="addNewForm()">Add New Service</button>

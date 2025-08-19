@@ -1,0 +1,35 @@
+<div class="container py-4">
+  <h2 class="mb-4">Experience</h2>
+
+
+  <div class="card p-3 mb-4 shadow-sm">
+    <h5>Add New Experience</h5>
+    <input [(ngModel)]="newExperience.company" class="form-control mb-2" placeholder="Company" />
+    <input [(ngModel)]="newExperience.role" class="form-control mb-2" placeholder="Role" />
+    <input [(ngModel)]="newExperience.startDate" type="date" class="form-control mb-2" />
+    <input [(ngModel)]="newExperience.endDate" type="date" class="form-control mb-2" />
+    <textarea [(ngModel)]="newExperience.description" class="form-control mb-2" placeholder="Description"></textarea>
+    <button class="btn btn-primary" (click)="addExperience()">Add</button>
+  </div>
+
+
+  <div *ngFor="let exp of experiences; let i = index" class="card p-3 mb-3 shadow-sm">
+    <div *ngIf="editIndex !== i">
+      <h5>{{ exp.role }} - {{ exp.company }}</h5>
+      <p><small>{{ exp.startDate }} - {{ exp.endDate || 'Present' }}</small></p>
+      <p>{{ exp.description }}</p>
+      <button class="btn btn-sm btn-outline-warning me-2" (click)="startEdit(i)">Edit</button>
+      <button class="btn btn-sm btn-outline-danger" (click)="deleteExperience(exp._id)">Delete</button>
+    </div>
+
+    <div *ngIf="editIndex === i">
+      <input [(ngModel)]="editExperience.company" class="form-control mb-2" />
+      <input [(ngModel)]="editExperience.role" class="form-control mb-2" />
+      <input [(ngModel)]="editExperience.startDate" type="date" class="form-control mb-2" />
+      <input [(ngModel)]="editExperience.endDate" type="date" class="form-control mb-2" />
+      <textarea [(ngModel)]="editExperience.description" class="form-control mb-2"></textarea>
+      <button class="btn btn-success me-2" (click)="saveEdit()">Save</button>
+      <button class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+    </div>
+  </div>
+</div>

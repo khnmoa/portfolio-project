@@ -1,0 +1,35 @@
+<div *ngFor="let exp of experience; let i = index" class="experience-form">
+  <h3>{{ exp.title }}</h3>
+  <form [formGroup]="experienceForms[i]">
+    <input formControlName="company" placeholder="Company" />
+    <input formControlName="title" placeholder="Job Title" />
+
+    <input formControlName="startDate" placeholder="Start Date" type="date" />
+    <input formControlName="endDate" placeholder="End Date" type="date" />
+    <textarea formControlName="description" placeholder="Description"></textarea>
+
+    <div class="button-group">
+      <button type="button" (click)="updateExperienceField(exp)">Edit</button>
+      <button type="button" class="delete" (click)="deleteExperienceField(exp._id, i)">Delete</button>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="newExperienceForm" class="experience-form new-experience">
+  <h3>New Experience Field</h3>
+  <form [formGroup]="newExperienceForm">
+    <input formControlName="company" placeholder="Company" />
+    <input formControlName="title" placeholder="Job Title" />
+
+    <input formControlName="startDate" placeholder="Start Date" type="date" />
+    <input formControlName="endDate" placeholder="End Date" type="date" />
+    <textarea formControlName="description" placeholder="Description"></textarea>
+
+    <div class="button-group">
+      <button type="button" (click)="addExperienceField()">Save</button>
+      <button type="button" class="cancel" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<button (click)="addNewForm()">Add New Experience Field</button>

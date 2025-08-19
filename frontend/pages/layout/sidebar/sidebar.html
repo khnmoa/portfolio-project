@@ -1,0 +1,38 @@
+<nav class="sidebar">
+  <ul>
+  <li>
+    <a routerLink="/">
+      <i class="bx bx-home"></i> Home
+    </a>
+  </li>
+  <li>
+    <a routerLink="/about">
+      <i class="bx bx-user"></i> About
+    </a>
+  </li>
+  <li>
+    <a routerLink="/services">
+      <i class="bx bx-cog"></i> Services
+    </a>
+  </li>
+  <li>
+    <a routerLink="/projects">
+      <i class="bx bx-briefcase"></i> Projects
+    </a>
+  </li>
+  <li>
+    <a routerLink="/contact">
+      <i class="bx bx-envelope"></i> Contact
+    </a>
+  </li>
+</ul>
+
+
+  <div class="social-links">
+  <a  [href]="personalInfo?.socialLinks?.github" target="_blank"><i class="bx bxl-github"></i></a>
+  <a [href]="personalInfo?.socialLinks?.linkedin" target="_blank"><i class="bx bxl-linkedin"></i></a>
+  <a [href]="personalInfo?.socialLinks?.facebook" target="_blank"><i class="bx bxl-facebook"></i></a>
+  <a [href]="personalInfo?.socialLinks?.instagram" target="_blank"><i class="bx bxl-instagram"></i></a>
+</div>
+
+</nav>

@@ -1,0 +1,41 @@
+<h2 class="page-title">Contact Us</h2>
+
+<div class="contact-container">
+  
+ 
+  <div class="contact-card small-card">
+    <div class="info-item">
+      <i class="bx bx-phone"></i>
+      <div>
+        <strong>Phone:</strong>
+        <p>{{ personalInfo.phone }}</p>
+      </div>
+    </div>
+    <div class="info-item">
+      <i class="bx bx-envelope"></i>
+      <div>
+        <strong>Email:</strong>
+        <p>{{ personalInfo.email }}</p>
+      </div>
+    </div>
+    <div class="info-item">
+      <i class="bx bx-map"></i>
+      <div>
+        <strong>Address:</strong>
+        <p>{{ personalInfo.address }}</p>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="contact-card large-card">
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <input type="text" placeholder="Your Name" formControlName="name">
+      <input type="email" placeholder="Your Email" formControlName="email">
+      <input type="text" placeholder="Subject" formControlName="subject">
+      <textarea placeholder="Your Message" formControlName="message"></textarea>
+      <button type="submit" [disabled]="contactForm.invalid">Send Message</button>
+    </form>
+  </div>
+
+</div>

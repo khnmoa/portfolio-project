@@ -1,0 +1,88 @@
+<div class="container">
+
+  <!-- Dropdown Projects -->
+  <label for="projectSelect">Select Project:</label>
+  <select id="projectSelect" (change)="onProjectSelected($event)">
+    <option value="">-- Select Project --</option>
+    <option *ngFor="let project of projects" [value]="project._id">{{ project.title }}</option>
+  </select>
+
+  <!-- Add New Project -->
+  <button (click)="openNewProjectForm()" style="margin-top: 10px;">Add New Project</button>
+
+
+  <form *ngIf="selectedProjectId" [formGroup]="projectForm" class="service-form" (ngSubmit)="saveEditProject()">
+    <h3>{{project.title}}</h3>
+
+    <label>Title:</label>
+    <input formControlName="title"  />
+
+    <label>Category:</label>
+    <input formControlName="category"  />
+
+    <label>Description:</label>
+    <textarea formControlName="description"></textarea>
+
+    <label>Technologies:</label>
+    <div formArrayName="technologies">
+      <div *ngFor="let techCtrl of editTechnologies.controls; let i = index" style="display:flex; align-items:center; gap: 10px; margin-bottom: 5px;">
+        <input [formControlName]="i" />
+        <button type="button" class="delete" (click)="removeEditTechnologyField(i)">Delete</button>
+      </div>
+    </div>
+    <button type="button" (click)="addEditTechnologyField()">Add Technology</button>
+
+    <label>Current Image:</label>
+        <img [src]="currentImage" *ngIf="currentImage" alt="Project Image" />
+    <input type="file" (change)="onImageSelected($event)" />
+
+    <label>Link:</label>
+    <input formControlName="link" />
+
+    <label>Date:</label>
+    <input type="date" formControlName="date" />
+
+    <div class="button-group">
+      <button type="submit">Save</button>
+      <button type="button" class="delete" (click)="deleteProject()">Delete Project</button>
+    </div>
+  </form>
+
+  
+  <form *ngIf="showNewProjectForm" [formGroup]="newProjectForm" class="service-form new-service" (ngSubmit)="saveNewProject()">
+    <h3>Add New Project</h3>
+
+    <label>Title:</label>
+    <input formControlName="title" (input)="onNewProjectTitleChange()" required />
+
+    <label>Category:</label>
+    <input formControlName="category" required />
+
+    <label>Description:</label>
+    <textarea formControlName="description"></textarea>
+
+    <label>Technologies:</label>
+    <div formArrayName="technologies">
+      <div *ngFor="let techCtrl of newTechnologies.controls; let i = index" style="display:flex; align-items:center; gap: 10px; margin-bottom: 5px;">
+        <input [formControlName]="i" />
+        <button type="button" class="delete" (click)="removeNewTechnologyField(i)">Delete</button>
+      </div>
+    </div>
+    <button type="button" (click)="addNewTechnologyField()">Add Technology</button>
+
+    <label>Image:</label>
+    <input type="file" (change)="onImageSelected($event)" />
+
+
+    <label>Link:</label>
+    <input formControlName="link" readonly />
+
+    <label>Date:</label>
+    <input type="date" formControlName="date" />
+
+    <div class="button-group">
+      <button type="submit">Save</button>
+      <button type="button" class="cancel" (click)="cancelNewProject()">Cancel</button>
+    </div>
+  </form>
+</div>

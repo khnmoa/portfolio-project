@@ -1,0 +1,43 @@
+<div *ngFor="let skill of skills; let i = index" class="skill-form">
+  <h3>{{ skill.name }}</h3>
+  <form [formGroup]="skillForms[i]">
+    <input formControlName="name" placeholder="Skill Name" />
+
+    <select formControlName="level">
+      <option value="">Select level</option>
+      <option value="Beginner">Beginner</option>
+      <option value="Intermediate">Intermediate</option>
+      <option value="Advanced">Advanced</option>
+      <option value="Expert">Expert</option>
+    </select>
+
+    <input formControlName="category" placeholder="Category" />
+    <div class="button-group">
+        <button type="button" (click)="editSkill(i)">Edit</button>
+        <button type="button" class="delete" (click)="deleteSkill(skill._id!, i)">Delete</button>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="newSkillForm" class="skill-form new-skill">
+  <h3>New Skill</h3>
+  <form [formGroup]="newSkillForm">
+    <input formControlName="name" placeholder="Skill Name" />
+
+    <select formControlName="level">
+      <option value="">Select level</option>
+      <option value="Beginner">Beginner</option>
+      <option value="Intermediate">Intermediate</option>
+      <option value="Advanced">Advanced</option>
+      <option value="Expert">Expert</option>
+    </select>
+
+    <input formControlName="category" placeholder="Category" />
+    <div class="button-group">
+        <button type="button" (click)="saveNewSkill()">Save</button>
+        <button type="button" class="cancel" (click)="cancelNewSkill()">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<button (click)="addNewSkill()">Add New Skill</button>

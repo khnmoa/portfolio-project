@@ -1,0 +1,58 @@
+<h2 class="page-title">About Us</h2>
+
+<div class="about-container">
+
+  <!-- Personal Info -->
+  <section class="personal-info">
+    <h2>Personal Information</h2>
+    <p><strong>Name:</strong> {{ personalInfo.name }}</p>
+    <p><strong>Email:</strong> {{ personalInfo.email }}</p>
+    <p><strong>Phone:</strong> {{ personalInfo.phone }}</p>
+    <p><strong>Address:</strong> {{ personalInfo.address }}</p>
+    <a *ngIf="personalInfo.cv" [href]="personalInfo.cv" target="_blank">Download CV</a>
+  </section>
+
+  <!-- Skills -->
+  <section class="skills">
+  <h2>Skills</h2>
+
+  <div *ngFor="let group of groupedSkills" class="skill-category">
+    <h3>{{ group.category }}</h3>
+    <ul>
+      <li *ngFor="let skill of group.skills">
+        <div class="skill-item">
+          <span class="skill-name">{{ skill.name }}</span>
+          <span class="skill-level-text">{{ skill.level }}</span>
+          <div class="progress-bar">
+            <div class="progress" [style.width.%]="getLevelPercent(skill.level)"></div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+  <!-- Education -->
+  <section class="education">
+    <h2>Education</h2>
+    <div *ngFor="let edu of education" class="edu-card">
+      <h3>{{ edu.degree }}</h3>
+      <p>{{ edu.school }}</p>
+      <span>{{ edu.startDate | date:'mediumDate' }} - {{ edu.endDate | date:'mediumDate'}}</span>
+      <p>{{ edu.description }}</p>
+    </div>
+  </section>
+
+ 
+  <!-- Experience -->
+  <section class="experience">
+    <h2>Experience</h2>
+    <div *ngFor="let exp of experience" class="exp-card">
+      <h3>{{ exp.title }}</h3>
+      <p>{{ exp.company }}</p>
+      <span>{{ exp.startDate | date:'mediumDate' }} - {{ exp.endDate | date:'mediumDate' }}</span>
+      <p>{{ exp.description }}</p>
+    </div>
+  </section>
+
+</div>
