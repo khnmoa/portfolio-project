@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
 import { DashboardLayout } from './layout/layout/dashboard-layout';
-import { DashboardHome } from './home/dashboard-home';
-import { PersonalInfo } from './Per-info/personal-info';
-import { Education } from './education/education';
-import { Experience } from './experience/experience';
+import { DashboardHome } from './dashboard-home';
+import { PersonalInfo } from './personal-info';
+import { Education } from './education';
+import { Experience } from './experience';
 
 import { Projects } from './projects/projects';
 import { Services } from './services/services';
