@@ -2,12 +2,12 @@
   <h3>{{ service.title }}</h3>
   <form [formGroup]="servicesForms[i]">
     
-    <!-- أيقونة المعاينة -->
+
     <div class="icon-preview">
       <i [class]="servicesForms[i].get('icon')?.value"></i>
     </div>
 
-    <!-- إدخال class الأيقونة -->
+    
     <input formControlName="icon" placeholder="Enter icon class (e.g. fa fa-user)" />
 
     <input formControlName="title" placeholder="Service Title" />
@@ -20,7 +20,7 @@
   </form>
 </div>
 
-<!-- فورم إضافة خدمة جديدة -->
+
 <div *ngIf="newServiceForm" class="service-form new-service">
   <h3>New Service</h3>
   <form [formGroup]="newServiceForm">

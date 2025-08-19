@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { DashboardLayout } from './layout/layout/dashboard-layout';
+import { DashboardLayout } from './layout/footer/dashboard-layout';
 import { DashboardHome } from './dashboard-home';
 import { PersonalInfo } from './personal-info';
 import { Education } from './education';
